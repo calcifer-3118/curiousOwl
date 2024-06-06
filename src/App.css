@@ -40,6 +40,7 @@ body.dyslexic * {
   border-bottom: lightgrey 2px solid;
   border-top: lightgrey 2px solid;
   z-index: 9999;
+  margin: -5px;
 }
 
 .menu {
