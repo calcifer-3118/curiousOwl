@@ -41,7 +41,7 @@ function App() {
             href="#philosophy"
             style={{
               fontFamily: "IBM Plex Sans",
-              color: activeSection === "philosophy" ? "#4cb944" : "inherit",
+              color: activeSection === "philosophy" && "#4cb944",
             }}
             onClick={() => handleSectionChange("philosophy")}
           >
@@ -51,7 +51,7 @@ function App() {
             href="#endeavours"
             style={{
               fontFamily: "IBM Plex Sans",
-              color: activeSection === "endeavours" ? "#4cb944" : "inherit",
+              color: activeSection === "endeavours" && "#4cb944",
             }}
             onClick={() => handleSectionChange("endeavours")}
           >
@@ -101,10 +101,12 @@ function App() {
             significantly{" "}
             <span className="highlight-red">improve learning outcomes</span>.
           </p>
-          <button className="button" style={{ marginRight: "20px" }}>
-            Start your Journey
-          </button>
-          <button type="button" class="login-with-google-btn">
+
+          <button
+            type="button"
+            class="login-with-google-btn"
+            style={{ marginTop: "30px" }}
+          >
             Sign in with Google
           </button>
         </section>
