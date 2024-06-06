@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="145.242 44.085 176.753 45.81" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="ABeeZee">@import url(https://fonts.googleapis.com/css2?family=ABeeZee%3Aital%2Cwght%400%2C400%3B1%2C400&amp;display=swap);</style>
+  </defs>
+  <text style="fill: rgb(51, 51, 51); font-family: ABeeZee; font-size: 28px; white-space: pre;"><tspan x="151.681" y="74.338">Curious </tspan><tspan style="fill: rgb(21, 169, 0);">Owl</tspan></text>
+  <path style="fill: rgb(255, 0, 0); stroke: rgb(255, 0, 0);" d="M 261.524 77.916 L 310.666 78.012"/>
+</svg>
