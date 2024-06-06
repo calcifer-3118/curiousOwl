@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
+  const [isDyslexic, setIsDyslexic] = useState(false);
+
+  const toggleFont = () => {
+    setIsDyslexic(!isDyslexic);
+    const body = document.querySelector("body");
+    if (isDyslexic) {
+      body.classList.remove("dyslexic");
+    } else {
+      body.classList.add("dyslexic");
+    }
+  };
+
   return (
-    <div className="container">
-      <header className="header">
+    <div className={"container"}>
+      <header
+        className="header"
+        style={{
+          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+          position: "fixed",
+          background: "white",
+        }}
+      >
         <div className="logo" style={{ fontSize: "1.8rem" }}>
-          Curious{" "}
-          <span
-            className="highlight"
-            style={{ textDecoration: "underline #d8261c 1.3px" }}
-          >
-            Owl
-          </span>
+          Curious <span className="highlight">Owl</span>
         </div>
         <nav className="menu">
           <a href="#philosophy" style={{ fontFamily: "IBM Plex Sans" }}>
@@ -23,6 +36,9 @@ function App() {
             Future Endeavours
           </a>
         </nav>
+        <button onClick={toggleFont} className="font-toggle">
+          Toggle Dyslexic Font
+        </button>
         <div className="indicator"></div>
       </header>
       <main className="content">
@@ -97,7 +113,7 @@ function App() {
         </div>
       </section>
       <section className="tools">
-        <h1>Tools for Students</h1>
+        <h1 style={{ marginBottom: "20px" }}>Tools for Students</h1>
         <p>
           Curious Owl is your tech-friend designed to make learning and
           test-taking enjoyable.
@@ -138,7 +154,13 @@ function App() {
       </section>
       <section
         className="section"
-        style={{ margin: "20px 0", padding: "20px", background: "white" }}
+        id="philosophy"
+        style={{
+          margin: "20px 0",
+          padding: "20px",
+          background: "white",
+          minHeight: "60vh",
+        }}
       >
         <h1 className="section-title" style={{}}>
           The <span style={{ color: "#d8261c" }}>Owl Philosophy</span>
@@ -157,7 +179,11 @@ function App() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "white" }}>
+      <section
+        className="section"
+        id="endeavours"
+        style={{ background: "white", minHeight: "70vh" }}
+      >
         <h1 style={{ width: "80%", marginBottom: "20px" }}>
           Future <span style={{ color: "#d8261c" }}> Endeavours</span>
         </h1>
@@ -174,10 +200,11 @@ function App() {
           <div
             style={{
               maxWidth: "45%",
-              height: "20%",
+              minHeight: "40vh",
               background: "#F5F5F5",
               borderRadius: "12px",
               padding: "20px",
+              textAlign: "center",
             }}
           >
             <h1 style={{ margin: "20px", textAlign: "center" }}>
@@ -192,13 +219,14 @@ function App() {
           <div
             style={{
               maxWidth: "45%",
-              height: "20%",
+              minHeight: "40vh",
               background: "#F5F5F5",
               borderRadius: "12px",
               padding: "20px",
+              textAlign: "center",
             }}
           >
-            <h1 style={{ marginBottom: "20px", textAlign: "center" }}>
+            <h1 style={{ margin: "20px", textAlign: "center" }}>
               Learning with Intuition
             </h1>
             <p style={{ margin: "7px" }}>
@@ -223,7 +251,10 @@ function App() {
         }}
       >
         <div className="contact">
-          Share your thoughts with fat-freereads@curiousowl.in
+          Share your thoughts with{" "}
+          <a href="mailto:fat-freereads@curiousowl.in">
+            fat-freereads@curiousowl.in
+          </a>
         </div>
         <img src="/img8.png" alt="Join us" />
       </div>
