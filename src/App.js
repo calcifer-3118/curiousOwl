@@ -5,6 +5,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 function App() {
   const [isDyslexic, setIsDyslexic] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleSectionChange = (sectionId) => {
+    setActiveSection(sectionId);
+  };
+
   const toggleFont = () => {
     setIsDyslexic(!isDyslexic);
     const body = document.querySelector("body");
@@ -26,22 +32,56 @@ function App() {
         }}
       >
         <div className="logo" style={{ fontSize: "1.8rem" }}>
-          Curious <span className="highlight">Owl</span>
+          <a href="#home" style={{ textDecoration: "none", color: "black" }}>
+            Curious <span className="highlight">Owl</span>
+          </a>
         </div>
         <nav className="menu">
-          <a href="#philosophy" style={{ fontFamily: "IBM Plex Sans" }}>
+          <a
+            href="#philosophy"
+            style={{
+              fontFamily: "IBM Plex Sans",
+              color: activeSection === "philosophy" ? "#4cb944" : "inherit",
+            }}
+            onClick={() => handleSectionChange("philosophy")}
+          >
             Our Philosophy
           </a>
-          <a href="#endeavours" style={{ fontFamily: "IBM Plex Sans" }}>
+          <a
+            href="#endeavours"
+            style={{
+              fontFamily: "IBM Plex Sans",
+              color: activeSection === "endeavours" ? "#4cb944" : "inherit",
+            }}
+            onClick={() => handleSectionChange("endeavours")}
+          >
             Future Endeavours
           </a>
         </nav>
-        <button onClick={toggleFont} className="font-toggle">
-          Toggle Dyslexic Font
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ marginRight: "10px", fontFamily: "OpenDyslexic" }}>
+            For Dyslexic Readers
+          </div>
+          <input
+            id="cb-toggle"
+            type="checkbox"
+            class="hide-me"
+            aria-labelledby="cb-label"
+            onClick={toggleFont}
+          />
+          <label for="cb-toggle" class="toggle"></label>
+        </div>
+        <button type="button" class="login-with-google-btn">
+          Sign in with Google
         </button>
-        <div className="indicator"></div>
       </header>
-      <main className="content">
+      <main className="content" id="home">
         <section className="text">
           <h1 style={{ fontWeight: "400", marginTop: "30px" }}>
             Empowering Education with Meaningful &amp;{" "}
@@ -61,7 +101,12 @@ function App() {
             significantly{" "}
             <span className="highlight-red">improve learning outcomes</span>.
           </p>
-          <button className="button">Start your Journey</button>
+          <button className="button" style={{ marginRight: "20px" }}>
+            Start your Journey
+          </button>
+          <button type="button" class="login-with-google-btn">
+            Sign in with Google
+          </button>
         </section>
         <div className="image-container">
           <img src="/img1.png" alt="illustration" />
@@ -253,7 +298,7 @@ function App() {
         <div className="contact">
           Share your thoughts with{" "}
           <a href="mailto:fat-freereads@curiousowl.in">
-            fat-freereads@curiousowl.in
+            <br /> fat-freereads@curiousowl.in
           </a>
         </div>
         <img src="/img8.png" alt="Join us" />
@@ -261,7 +306,7 @@ function App() {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           background: "#F5F5F5",
           height: "30%",
           padding: "50px",
@@ -271,10 +316,10 @@ function App() {
           Curious <span style={{ color: "#15A900" }}>Owl </span>
         </div>
         <div>
-          <h4 style={{ fontWeight: "500" }}>Useful Links</h4>
-          <p>Site Items</p>
-          <p>Privacy Policy</p>
-          <p>Contact Us</p>
+          <h4 style={{ fontWeight: "600" }}>Useful Links</h4>
+          <p style={{ margin: "5px", cursor: "pointer" }}>Site Items</p>
+          <p style={{ margin: "5px", cursor: "pointer" }}>Privacy Policy</p>
+          <p style={{ margin: "5px", cursor: "pointer" }}>Contact Us</p>
         </div>
       </div>
     </div>
