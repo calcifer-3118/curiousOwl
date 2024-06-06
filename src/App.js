@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -10,6 +10,36 @@ function App() {
   const handleSectionChange = (sectionId) => {
     setActiveSection(sectionId);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      let foundActive = false;
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const scrollPosition = window.pageYOffset;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionBottom &&
+          !foundActive
+        ) {
+          setActiveSection(section.id);
+          foundActive = true;
+        }
+      });
+
+      if (!foundActive) {
+        setActiveSection(""); // Reset to default when no section is in view
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleFont = () => {
     setIsDyslexic(!isDyslexic);
